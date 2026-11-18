@@ -1,0 +1,60 @@
+{
+  "entry_path": "/queue/pull",
+  "media": "application/json",
+  "routes": [
+    {
+      "path": "/queue/pull",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "{\"messages\": [{\"message_id\": \"m1\", \"receipt_handle\": \"r1\", \"lease_until\": 100, \"device\": \"kiosk-A\", \"epoch\": \"boot-9\", \"transaction_id\": 1, \"part\": 0, \"payload\": \"signed-in\"}]}"
+    },
+    {
+      "path": "/queue/pull",
+      "method": "POST",
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "{\"messages\": [{\"message_id\": \"m1\", \"receipt_handle\": \"r1\", \"lease_until\": 100, \"device\": \"kiosk-A\", \"epoch\": \"boot-9\", \"transaction_id\": 1, \"part\": 0, \"payload\": \"signed-in\"}]}"
+    },
+    {
+      "path": "/queue/ack",
+      "method": "POST",
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "{\"handles\": [{\"handle\": \"r1\", \"status\": \"accepted\"}]}"
+    },
+    {
+      "path": "/queue/renew",
+      "method": "POST",
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "{\"handles\": [{\"handle\": \"r1\", \"status\": \"accepted\", \"lease_until\": 130}]}"
+    },
+    {
+      "path": "/clock",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "{\"now\": 80}"
+    },
+    {
+      "path": "/queue/complete",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "{\"messages\": [{\"device\": \"kiosk-A\", \"epoch\": \"boot-9\", \"transaction_id\": 1, \"part\": 1, \"payload\": \"\", \"end\": true, \"parts\": 2, \"sha256\": \"7636aed42b284390cd8717be242e024f035d47ee92db33effe4ccf857294fd5a\", \"receipt_handle\": \"r2\", \"message_id\": \"m2\"}]}"
+    }
+  ]
+}

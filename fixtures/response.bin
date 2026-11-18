@@ -1,0 +1,1 @@
+{"messages": [{"message_id": "m1", "receipt_handle": "r1", "lease_until": 100, "device": "kiosk-A", "epoch": "boot-9", "transaction_id": 1, "part": 0, "payload": "signed-in"}]}
