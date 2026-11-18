@@ -1,0 +1,32 @@
+{
+  "entry_path": "/queue/pull",
+  "media": "application/json",
+  "queue": {
+    "now": 0,
+    "max_lease_seconds": 30,
+    "ack_response": "normal",
+    "messages": [
+      {
+        "message_id": "m1",
+        "device": "kiosk-A",
+        "epoch": "boot-9",
+        "transaction_id": 1,
+        "part": 0,
+        "payload": "签到:",
+        "available_until": 120
+      },
+      {
+        "message_id": "m2",
+        "device": "kiosk-A",
+        "epoch": "boot-9",
+        "transaction_id": 1,
+        "part": 1,
+        "payload": "到厅",
+        "end": true,
+        "parts": 2,
+        "sha256": "30f1068c64b48900c41942ee767ef4079957451a92d61341a10d560f8a4e57b5",
+        "available_until": 120
+      }
+    ]
+  }
+}

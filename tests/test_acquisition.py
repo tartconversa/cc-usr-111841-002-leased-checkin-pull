@@ -5,11 +5,20 @@ import threading
 import unittest
 from acquire.decode import decode
 from acquire.origin import make_server
+from acquire import service
 from acquire.service import collect_one
 from acquire.store import Store
 from acquire.transport import fetch
 
 class AcquisitionTests(unittest.TestCase):
+    def test_legacy_module_entrypoint_still_reads_one_response(self):
+        import contextlib, io
+        output=io.StringIO()
+        with contextlib.redirect_stdout(output):
+            service.main([self.url,self.database])
+        result=json.loads(output.getvalue())
+        self.assertEqual(result['count'],1)
+        self.assertEqual(result['documents'][0]['key'],'m1')
     def setUp(self):
         self.temporary=tempfile.TemporaryDirectory()
         self.database=str(Path(self.temporary.name)/'data.sqlite3')
